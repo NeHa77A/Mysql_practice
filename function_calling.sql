@@ -122,14 +122,18 @@ BEGIN
     generate_loop: LOOP
         INSERT INTO loop_table VALUES (var);
         
-        IF var %3= 0 THEN
-        SET var = var +1;
-        if var = 100 then 
+        IF var % 3 = 0 THEN
+            SET var = var + 1;
+        END IF;
+        
+        IF var = 100 THEN 
             LEAVE generate_loop;
         END IF;
-        END IF;
+        
+        SET var = var + 1;
     END LOOP generate_loop;
 END $$
+
 DELIMITER ;
 create table divide(var int);
 select * from divide;
